@@ -74,10 +74,15 @@ function submit_function_add_shops()
 
         );
         $wallet_data = insert_custom_table($wpdb->prefix . 'shop_wallet', $wallet_data);
-        if ($shop_id && $custom_id && !isset($shop_user_id->errors) && $wallet_data && $category_master) {
+
+       
+        
+
+        if ($shop_id && $custom_id && !isset($shop_user_id->errors)) {
 
             $sucesss = true;
         } else {
+    
             $sucesss = false;
         }
     } else {
