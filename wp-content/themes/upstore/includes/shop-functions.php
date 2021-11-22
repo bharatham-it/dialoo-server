@@ -17,19 +17,20 @@ function submit_function_add_shops()
     start_transaction($multiple_tables_affected);
     $get_data = get_form_request('formdata');
     $get_data['content'] = "";
-    /* print_r($get_data);
-    exit; */
+   
     $shop_id = manage_post($get_data, 'create');
-    // for image upload
+
     $file = $_FILES['file'];
     $attachment_id = upload_file($file, $shop_id);
+    $get_data['user_login'] = $get_data['title'];
+    $get_data['user_pass'] = $get_data['shop_mobile'];
     ///////////
     wp_set_post_terms($shop_id, array($get_data['district_id']), 'districts');
     wp_set_post_terms($shop_id, array($get_data['shop_category_id']), 'shop_categories');
     $params = array('shop_email', 'shop_mobile', 'shop_alt_mobile', 'address', 'town_name', 'pincode', 'district_id', 'street_name', 'landmark','rating','video_url','map_url','gst_no');
     if (is_numeric($shop_id) &&  $shop_id > 0) { 
         $build_shop_price_percent =  build_shop_price_percentage($get_data);
-        $shop_user_id = add_user_with_role();
+        $shop_user_id = add_user_with_role($get_data);
         $characters = "ABCDEFGHIJKLMONP123456789";
         $type = $get_data['type'];
         if($type == "shop"){

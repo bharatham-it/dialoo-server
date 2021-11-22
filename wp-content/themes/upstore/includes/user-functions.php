@@ -132,9 +132,8 @@ function submit_function_register_user()
     echo  build_response_json($response, $addl_response);
     die();
 }
-function add_user_with_role()
-{
-    $get_data = get_form_request('formdata');
+function add_user_with_role($get_data)
+{ 
     $params = array('user_login', 'user_pass', 'user_email', 'role');
     $build_data = build_form_data($get_data, $params, '');
     $user_id = wp_insert_user($build_data);
