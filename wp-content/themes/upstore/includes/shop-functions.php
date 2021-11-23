@@ -76,6 +76,7 @@ function submit_function_add_shops()
         $wallet_data = insert_custom_table($wpdb->prefix . 'shop_wallet', $wallet_data);
 
        
+        //commented
         
 
         if ($shop_id && $custom_id && !isset($shop_user_id->errors)) {
