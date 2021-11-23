@@ -22,7 +22,7 @@ function submit_function_add_shops()
 
     $file = $_FILES['file'];
     $attachment_id = upload_file($file, $shop_id);
-    $get_data['user_login'] = $get_data['title'];
+    $get_data['user_login'] = $get_data['shop_mobile'];
     $get_data['user_pass'] = $get_data['shop_mobile'];
     ///////////
     wp_set_post_terms($shop_id, array($get_data['district_id']), 'districts');
@@ -77,7 +77,7 @@ function submit_function_add_shops()
 
        
         //commented
-        
+
 
         if ($shop_id && $custom_id && !isset($shop_user_id->errors)) {
 
